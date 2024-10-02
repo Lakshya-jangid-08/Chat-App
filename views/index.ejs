@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat App</title>
+    <link rel="stylesheet" href="stylesheets/index.css">
+</head>
+<body>
+    <div class="webapp flex ac jc">
+        <a href="/logout"><img src="./images/power Off.png" alt="Logout"></a>
+        <div class="background rd black pd">
+            <div id="messages" class="textarea">
+                <!-- Chat messages will be displayed here -->
+            </div>
+        </div>
+        <div class="input fw flex ac jc">
+            <form class="form" id="form">
+                <input id="input" type="text" placeholder="Send Message" class="hei text rd mg pd">
+                <input type="submit" value="Send" class="submit rd mg pd hei">
+            </form>
+        </div>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        var form = document.getElementById('form');
+        var input = document.getElementById('input');
+        var messages = document.getElementById('messages');
+        
+        // Check for username in local storage
+        var username = localStorage.getItem('username');
+
+        if (!username) {
+            // Prompt for username if not in local storage
+            username = prompt("Enter your username");
+            if (username) {
+                localStorage.setItem('username', username);
+                socket.emit('new user', username);
+            }
+        } else {
+            // Emit new user event if username is already stored
+            socket.emit('new user', username);
+        }
+
+        // Handle form submit
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (input.value) {
+                socket.emit('chat message', { username: username, message: input.value });
+                input.value = '';
+            }
+        });
+
+        // Listen for new messages
+        socket.on('chat message', function(data) {
+            var item = document.createElement('div');
+            item.classList.add(data.username === username ? 'left' : 'right', 'msg', data.username === username ? 'green' : 'blue', 'mg', 'pd', 'rd');
+            item.innerHTML = `<h5>${data.username}:</h5><div>${data.message}</div>`;
+            messages.appendChild(item);
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+
+        // Notify when a new user joins
+        socket.on('user joined', function(username) {
+            var item = document.createElement('div');
+            item.classList.add('notification', 'mg', 'pd', 'rd');
+            item.textContent = `${username} has joined the chat`;
+            messages.appendChild(item);
+        });
+
+        // Notify when a user leaves
+        socket.on('user left', function(username) {
+            var item = document.createElement('div');
+            item.classList.add('notification', 'mg', 'pd', 'rd');
+            item.textContent = `${username} has left the chat`;
+            messages.appendChild(item);
+        });
+
+        // Scroll to the bottom for new messages
+        window.scrollTo(0, document.body.scrollHeight);
+    </script>
+</body>
+</html>

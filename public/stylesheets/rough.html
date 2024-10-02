@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Chat App</title>
+            <link rel="stylesheet" href="index.css">
+        </head>
+        <body>
+            <div class="webapp flex ac jc">
+                <a href="/logout"><img src="./images/power Off.png"></a>
+                <div class="background rd black pd">
+                    <div class="textarea">
+                        <div class="left msg blue mg pd rd">
+                            <h5>L : </h5>
+                            <div class="blue rd">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat unde ducimus fugit distinctio quae beatae quaerat. Voluptas non iusto dignissimos nemo. Quo eius quod quasi id consequatur modi eligendi!</div>
+                        </div>
+                        <div class="right msg green mg pd rd">
+                            <h5>Suresh :</h5>
+                            <div class="green rd">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos, tenetur rerum beatae in ullam architecto vitae molestias nobis dolorem perspiciatis quidem modi facere ducimus facilis. Ipsa alias voluptate architecto laborum!</div>
+                        </div>
+                        <div class="left msg blue mg pd rd">
+                            <h5>L : </h5>
+                            <div class="blue rd">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat unde ducimus fugit distinctio quae beatae quaerat. Voluptas non iusto dignissimos nemo. Quo eius quod quasi id consequatur modi eligendi!</div>
+                        </div>
+                        <div class="right msg green mg pd rd">
+                            <h5>Suresh :</h5>
+                            <div class="green rd">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos, tenetur rerum beatae in ullam architecto vitae molestias nobis dolorem perspiciatis quidem modi facere ducimus facilis. Ipsa alias voluptate architecto laborum!</div>
+                        </div>
+                        <div class="left msg blue mg pd rd">
+                            <h5>L : </h5>
+                            <div class="blue rd">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat unde ducimus fugit distinctio quae beatae quaerat. Voluptas non iusto dignissimos nemo. Quo eius quod quasi id consequatur modi eligendi!</div>
+                        </div>
+                        <div class="right msg green mg pd rd">
+                            <h5>Suresh :</h5>
+                            <div class="green rd">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos, tenetur rerum beatae in ullam architecto vitae molestias nobis dolorem perspiciatis quidem modi facere ducimus facilis. Ipsa alias voluptate architecto laborum!</div>
+                        </div>
+                        <div class="left msg blue mg pd rd">
+                            <h5>L : </h5>
+                            <div class="blue rd">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat unde ducimus fugit distinctio quae beatae quaerat. Voluptas non iusto dignissimos nemo. Quo eius quod quasi id consequatur modi eligendi!</div>
+                        </div>
+                        <div class="right msg green mg pd rd">
+                            <h5>Suresh :</h5>
+                            <div class="green rd">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos, tenetur rerum beatae in ullam architecto vitae molestias nobis dolorem perspiciatis quidem modi facere ducimus facilis. Ipsa alias voluptate architecto laborum!</div>
+                        </div>
+                        
+                        <!-- <div class="left msg blue mg pd rd">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat unde ducimus fugit distinctio quae beatae quaerat. Voluptas non iusto dignissimos nemo. Quo eius quod quasi id consequatur modi eligendi!</div> -->
+                    </div>
+                    
+                </div>
+                <div class="input fw flex ac jc">
+                        <form class="form">
+                            <input type="text" placeholder="Send Message" class="hei text rd mg pd">
+                            <input type="submit" value="send"class="submit rd mg pd hei">
+                        </form>
+                    </div>
+            </div>
+            
+            <script src="/socket.io/socket.io.js"></script>
+            <script>
+                var socket = io();
+                var messages = document.getElementById('messages');
+                var form = document.getElementById('form');
+                var input = document.getElementById('text');
+
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    if (input.value) {
+                    socket.emit('chat message', input.value);
+                    input.value = '';
+                    }
+                });
+
+                // socket.on('chat message', function(msg) {
+                //     var item = document.createElement('li');
+                //     item.textContent = msg;
+                //     messages.appendChild(item);
+                //     window.scrollTo(0, document.body.scrollHeight);
+                // });
+            </script>
+        </body>
+    </html>

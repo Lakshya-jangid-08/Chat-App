@@ -1,0 +1,149 @@
+*{
+    margin : 0px;
+    padding : 0px;
+    text-decoration: none;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+body{
+    color : white;
+    background-color: rgb(40, 39, 39);
+    height: 100%;
+    width: 100%;
+}
+.flex{display:flex;}
+.gp{gap: 10px;}
+.wrap{flex-wrap: wrap;}
+.dircol{flex-direction: column;}
+.hide{visibility: hidden;}
+.ac{align-items: center;}
+.sp{justify-content: space-between;}
+.jc{justify-content: center;}
+.block{display:block;}
+.black{background-color: #000000;}
+.red{background-color: crimson;}
+.blue{background-color: royalblue;}
+.violet{background-color: violet;}
+.green{background-color: seagreen;}
+.wood{background-color: burlywood;}
+.bb{border: 2px solid black;}
+.bw{border: 2px solid rgb(255, 255, 255);}
+.edit{color :yellow; text-decoration: none;}
+.like{color : hotpink; text-decoration: none;}
+.by{border: 2px solid rgb(251, 255, 0);}
+.dlt{color : rgb(255, 17, 0); text-decoration: none;}
+.fw{width: 100vw;}
+.fh{height: 100vh;}
+.mg{margin:10px;}
+.box{
+    height: 100px;
+    width: 100px;
+}
+.x{
+    margin : 20px;
+    border-radius: 7px;
+    padding :15px;
+}
+.in{    
+    width: 22vmax;
+    height: 3vmax;
+}
+::placeholder{
+    font-weight:bolder;
+}
+.cb{
+    border-radius: 20px;}
+@media screen and (max-width :600px) {
+    .in{
+        width: 70vw;
+        height: 3vh;
+    }
+    body{
+        font-size : 20px;
+    }
+}
+
+.info{
+    width: 35vmax;
+    height: 100vh;
+    position: absolute;
+    right: 0px;
+    padding: 1vw;
+}
+.saved{
+    width : 100%;
+    height: 4vmax;
+    text-align: center;
+}
+.saved h2{
+    margin : 20px;
+}
+.open{
+    position: absolute;
+    right : 8vmax;
+    color : green; text-decoration: none;
+}
+.prev-login{
+    font-size: 1.8vmax;
+    padding :0.5vw 1vw;
+    margin :0.5vw;
+    justify-content: space-between;
+}
+.baar{
+    position: absolute;
+    right : 2vw;
+    top : 2vw;
+}
+img{
+    width : 3vmax;
+    height: 3vmax;
+}
+
+.baar:hover{
+    .info{
+        visibility: visible;
+    }
+}
+
+.page{
+    height: 99vh;
+    width : 99vw;
+    padding: 1vh 1vw;
+}
+
+.make h1{
+    margin: 10px 0px;
+}
+
+textarea{
+    margin: 10px 0px;
+    border-radius: 20px;
+    padding: 10px;
+    width: 500px;
+    height: 79px;
+    resize: none;
+}
+
+.Cbtn{
+    height: 3vmax;
+    width : 7vmax;
+    border-radius: 15px;
+    color: #000000;
+    background-color: aqua;
+}
+
+.prevpost{
+    padding: 3vmax 0px;
+}
+.post{
+    letter-spacing: tighter;
+    max-width: 400px;
+    max-height : 200px;
+    padding: 5px;
+}
+.detail{
+    justify-content: space-between;
+}
+.l h2{
+    font-size: 2.5em;
+    margin-bottom: 3vmax;
+}
